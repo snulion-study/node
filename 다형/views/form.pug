@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        meta(charset='utf-8') 
+        //- 괄호쳐서 입력하면 그 태그의 속성 입력 가능
+    body
+        form(action='/form_receiver' method='post')
+            //- method 별도로 입력 안하면 get
+            //- post 방식으로 전송하면, url을 통하지 않음. 따라서 url에 query string 붙지 않음.
+            p
+                input(type='text' name='title')
+            p
+                textarea(name='description')
+            p
+                input(type='submit')
+                //- name:전송하는 내용의 이름을 설정
