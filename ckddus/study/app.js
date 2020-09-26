@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
+app.set('view engine', 'jade');
+app.set('views', './views'); //jade default로 views/ 찾아줘서 안써도 되긴 함.
 app.use(express.static('public'));
+app.get('/template', function (req, res) {
+  res.render('temp');
+});
+
 // get: router 라고 부른다.
 app.get('/', function (req, res) {
   res.send('Hello home page');
