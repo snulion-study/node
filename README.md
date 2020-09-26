@@ -1,9 +1,10 @@
 #### 9/26까지 할 것 !! 
-- [ ] [인프런 강의](https://www.inflearn.com/course/nodejs-%EA%B0%95%EC%A2%8C-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/dashboard) 끝까지 듣기
-- [ ] 강의 실습 코드 **master 브랜치** 에 본인 폴더에 담아 푸시하기
+- [x] [인프런 강의](https://www.inflearn.com/course/nodejs-%EA%B0%95%EC%A2%8C-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/dashboard) 끝까지 듣기
+- [x] 강의 실습 코드 **master 브랜치** 에 본인 폴더에 담아 푸시하기
 
 #### 10/3까지 할 것 !!
 - [ ] 노드 스터디 동안 만들 프로젝트 계획안 **master 브랜치**에 푸시하기 ( 자유 형식)
+- [ ] [제로초님의 블로그](https://www.zerocho.com/category/MongoDB?page=1) 몽구스 내용 읽어오기
 
 <br/> <br/>
 
