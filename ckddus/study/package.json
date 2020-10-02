@@ -1,0 +1,17 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "Server side js tutorials",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jade": "^1.11.0",
+    "supervisor": "^0.12.0",
+    "underscore": "^1.11.0"
+  }
+}
