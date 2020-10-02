@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://minji0345:<password>@minji.lvtrc.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://minji0345:tjrrhwch722!@minji.lvtrc.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
