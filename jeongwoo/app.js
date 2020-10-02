@@ -33,9 +33,8 @@ app.get('/form_receiver', (req, res) => {
 app.post('/form_receiver', (req, res) => {
   const title = req.body.title;
   const discription = req.body.description;
-  res.send(title + '+' + discription);
+  res.send(title + ',' + discription);
 })
-
 app.get('/topic/:id/:mode', (req, res) => {
   res.send(req.params.id + ',' + req.params.mode)
 })

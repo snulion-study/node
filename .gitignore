@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,node,osx,windows,visualstudiocode
 
 ### Node ###
+config/
 # Logs
 logs
 *.log
