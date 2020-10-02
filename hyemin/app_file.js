@@ -2,7 +2,22 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const mongoose = require("mongoose");
+const config = require("./config/key");
 
+mongoose
+  .connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB connected..."))
+  .catch((err) => console.log(err));
+
+const { User } = require("./models/User");
+
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set("views", "./views_file");
 app.set("view engine", "pug");
@@ -55,5 +70,16 @@ app.post("/topic", function (req, res) {
       res.status(500).send("Internal Server Error");
     }
     res.redirect("/topic/" + title);
+  });
+});
+//mongodb+srv://hyemmie:<password>@cluster0.ugjn4.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+app.post("/register", (req, res) => {
+  const user = new User(req.body);
+  user.save((err, userInfo) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({
+      success: true,
+    });
   });
 });
