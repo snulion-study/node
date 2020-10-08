@@ -14,8 +14,11 @@ html
     
     div
       each task in tasks
+        - const action=`/tasks/${task._id}?_method=DELETE`;
         a(href="/tasks/"+task._id)
           p= 'title: ' + task.title + ' / detail: ' + task.detail
+        form(action=action method='post')
+          button(type='submit') 삭제
       
       
         

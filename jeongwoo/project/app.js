@@ -1,4 +1,5 @@
 const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -14,6 +15,7 @@ app.listen(3000, () => {
 });
 app.set('views', './view');
 app.set('view engine', 'pug');
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -74,4 +76,39 @@ app.get('/tasks/:taskId', (req, res) => {
       message: err
     })
   });
+});
+
+// task delete
+app.delete('/tasks/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+
+  Task.findByIdAndDelete(taskId)
+  .then(result => {
+    console.log('삭제성공');
+    res.status(200).redirect('/tasks');
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      message: err
+    })
+  })
+});
+
+// task update
+app.put('/tasks/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+
+  Task.findByIdAndUpdate({ _id: taskId }, { title: req.body.title, detail: req.body.detail }, { new: true })
+  .then((task) => {;
+    console.log('수정 성공');
+    console.log(task);
+    res.status(200).redirect('/tasks');
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      message: err
+    })
+  })
 })

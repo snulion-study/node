@@ -5,4 +5,12 @@ html
     title 오늘 할 일
   body
     p= "할일: " + task.title + " / 세부사항:  " + task.detail
+    h1 수정 사항
+    form(action=`/tasks/${task._id}?_method=PUT` method='post')
+      input(type="text" name="title") 
+      input(type="text" name="detail")
+      button(type='submit') 수정
+    div
+      a(href="/tasks") 되돌아가기
+
       
