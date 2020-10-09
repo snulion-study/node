@@ -5,13 +5,9 @@ html
     body
         h1 
             a(href='/topic') Server Side JavaScript
-        ul
-            each topic in topics
-                li
-                    a(href='/topic/'+topic)= topic
         article
-            h2= title
-            = content
+            h2= topic.title
+            = topic.description
         
         div
             a(href='/topic/new') new
