@@ -40,4 +40,34 @@ topicController.save = function(req,res) {
     })
 }
 
+topicController.edit = function(req, res) {
+    Topic.findOne({_id: req.params.id}).exec(function(err, topic){
+        if(err) {
+            console.log(`Error: ${err}`);
+        } else {
+            res.render("../views/topic/edit",{topic,topic});
+        }
+    })
+}
+
+topicController.update = function(req,res) {
+    Topic.findByIdAndUpdate(
+        req.params.id, { $set:
+            {
+                title: req.body.title,
+                description: req.body.description
+            }
+        },
+        {new: true}, 
+        function(err, topic){
+            if(err) {
+                console.log(err);
+                res.render("../views/topic/edit", {topic: req.body});
+            } else {
+                res.redirect(`/topic/show/${topic._id}`);
+            }
+        }
+    );
+}
+
 module.exports = topicController;

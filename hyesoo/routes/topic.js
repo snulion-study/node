@@ -2,14 +2,18 @@ var express = require('express');
 
 var router = express.Router();
 
-var data = require('../controllers/topicController.js');
+var topic = require('../controllers/topicController.js');
 
-router.get('/', data.list);
+router.get('/', topic.list);
 
-router.get('/show/:id', data.show);
+router.get('/show/:id', topic.show);
 
-router.get('/new', data.new);
+router.get('/new', topic.new);
 
-router.post('/save', data.save);
+router.post('/save', topic.save);
+
+router.get('/edit/:id', topic.edit);
+
+router.post('/update/:id', topic.update)
 
 module.exports = router;
