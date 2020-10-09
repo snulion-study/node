@@ -10,5 +10,6 @@ html
             = topic.description
         
         div
-            a(href='/topic/new') new
             a(href='/topic/edit/'+topic._id) edit
+        form(action= '/topic/delete/'+topic._id method="post")
+            button(type="submit") DELETE

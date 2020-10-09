@@ -14,6 +14,8 @@ router.post('/save', topic.save);
 
 router.get('/edit/:id', topic.edit);
 
-router.post('/update/:id', topic.update)
+router.post('/update/:id', topic.update);
+
+router.post('/delete/:id', topic.delete);
 
 module.exports = router;

@@ -70,4 +70,15 @@ topicController.update = function(req,res) {
     );
 }
 
+topicController.delete = function(req, res) {
+    Topic.deleteOne({_id:req.params.id}, function(err) {
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Employee deleted!!");
+            res.redirect("/topic");
+        }
+    });
+}
+
 module.exports = topicController;
