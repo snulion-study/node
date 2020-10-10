@@ -1,11 +1,32 @@
+//mongodb+srv://dahyoung:<password>@cluster0.kig1x.mongodb.net/<dbname>?retryWrites=true&w=majority
+//몽고디비 복붙!!
+const mongoose = require('mongoose');
+mongoose.connect(config.mongoURI, {
+    useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
+}).then(() => console.log('MongoDB connected...')).catch(err => console.log(err))
+
+const { User } = require("./models/User");
+const config = require('./config/key');
+
 var express = require('express');
 var bodyParser = require('body-parser'); //bodyparser 읽어오기
 var fs = require('fs');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false })) //bodyparser express 검색해서 찾으면 됨
+app.use(bodyParser.json());
 app.locals.pretty = true;
 app.set('views', './views_file'); //우리는 템플릿 엔진 파일을 views_file 파일 밑에 두겠다.
 app.set('view engine', 'pug'); //어떠한 템플릿 엔진을 쓸 거냐면 -> pug 쓸 거다.
+
+app.post('/register',(req,res)=>{
+    const user = new User(req.body);
+    user.save((err,userInfo) => {
+        if(err) return res.json({ success: false, err})
+        return res.status(200).json({
+            success: true
+        })
+    })
+})
 
 app.get('/topic/new', function(req,res){
     fs.readdir('data', function(err, files){
