@@ -45,7 +45,7 @@ topicController.edit = function(req, res) {
         if(err) {
             console.log(`Error: ${err}`);
         } else {
-            res.render("../views/topic/edit",{topic,topic});
+            res.render("../views/topic/edit",{topic: topic});
         }
     })
 }
@@ -75,7 +75,7 @@ topicController.delete = function(req, res) {
         if(err){
             console.log(err);
         } else {
-            console.log("Employee deleted!!");
+            console.log("Topic deleted!!");
             res.redirect("/topic");
         }
     });

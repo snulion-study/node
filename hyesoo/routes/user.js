@@ -1,5 +1,3 @@
-const { auth } = require("../middleware/auth");
-
 var express = require('express');
 
 var router = express.Router();

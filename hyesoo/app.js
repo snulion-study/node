@@ -33,17 +33,6 @@ app.set('views','./views')
 // 사용할 템플릿 엔진 설정
 app.set('view engine','pug');
 
-app.post('/register',(req,res)=>{
-    const user = new User(req.body);
-    user.save((err,userInfo) => {
-        if(err) return res.json({success: false, err})
-        return res.status(200).json({
-            success:true
-        })
-    })
-})
-
-
 app.listen(3000,function(){
     console.log('Connected, 3000 port!');
 })

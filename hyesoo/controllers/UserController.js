@@ -26,21 +26,21 @@ userController.loginpage = function(req,res) {
 
 userController.login = function(req,res){
     //요청에서 입력된 이메일이 데이터베이스에 있는지 확인
-    User.findOne({email: req.body.email},(err,user)=>{
+    User.findOne({email: req.body.email},(finderr,user)=>{
         if(!user){
-            console.log(`No such email`,err)
+            console.log(`No such email`)
             res.render("../views/user/login")
         } else{
             //이메일이 데이터베이스에 있는 경우, 비밀번호가 사용자가 입력한 비밀번호와 일치하는지 확인
-            user.comparePassword(req.body.password, (err,isMatch) => {
+            user.comparePassword(req.body.password, (passworderr,isMatch) => {
                 if(!isMatch){
-                    console.log(`Wrong Password`,err)
+                    console.log(`Wrong Password`)
                     res.render("../views/user/login")
                 } else{
                     //비밀번호가 맞다면 토큰을 생성
-                    user.generateToken((err,user) => {
+                    user.generateToken((tokenerr,user) => {
                         if(err){
-                            console.log(err);
+                            console.log(tokenerr);
                             res.render("../views/user/login")
                         } else{
                             //x_auth 라는 이름으로 쿠키에 토큰을 저장함
