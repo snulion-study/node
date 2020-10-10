@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
+//로그인 로그아웃을 위한 cookieParser 설정
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 //MongoDB 연결
 const mongoose = require('mongoose');
 const config = require('./config/key');
@@ -14,7 +18,8 @@ mongoose.connect(config.mongoURI, {
 }).then(() => console.log('MongoDB connected...')).catch(err => console.log(err))
 
 //User model
-const { User } = require("./models/User");
+const user = require('./routes/user');
+app.use('/accounts',user);
 
 //Topic model and router
 const topic = require('./routes/topic');
