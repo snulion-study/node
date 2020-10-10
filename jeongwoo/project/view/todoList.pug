@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title 오늘 할 일
+  body
+    form(action='/tasks' method='post')
+      p
+        input(type='text' name='title')
+      p
+        input(type='text' name='detail')
+      p
+        input(type='submit')
+    
+    div
+      each task in tasks
+        - const action=`/tasks/${task._id}?_method=DELETE`;
+        a(href="/tasks/"+task._id)
+          p= 'title: ' + task.title + ' / detail: ' + task.detail
+        form(action=action method='post')
+          button(type='submit') 삭제
+      
+      
+        
+      
