@@ -1,0 +1,25 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "- [ ] [인프런 강의](https://www.inflearn.com/course/nodejs-%EA%B0%95%EC%A2%8C-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/dashboard) 끝까지 듣기 - [ ] 강의 실습 코드 **master 브랜치** 에 본인 폴더에 담아 푸시하기",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "make-dir": "^3.1.0",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snulion-study/node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snulion-study/node/issues"
+  },
+  "homepage": "https://github.com/snulion-study/node#readme"
+}
