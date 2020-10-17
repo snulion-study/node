@@ -3,8 +3,11 @@
 - [x] 강의 실습 코드 **master 브랜치** 에 본인 폴더에 담아 푸시하기
 
 #### 10/3까지 할 것 !!
-- [ ] 노드 스터디 동안 만들 프로젝트 계획안 **master 브랜치**에 푸시하기 ( 자유 형식)
-- [ ] [제로초님의 블로그](https://www.zerocho.com/category/MongoDB?page=1) 몽구스 내용 읽어오기
+- [x] 노드 스터디 동안 만들 프로젝트 계획안 **master 브랜치**에 푸시하기 ( 자유 형식)
+- [x] [제로초님의 블로그](https://www.zerocho.com/category/MongoDB?page=1) 몽구스 내용 읽어오기
+
+#### 10/10까지
+- [x] 각자의 방식대로 CRUD, 회원가입 구현해보기
 
 <br/> <br/>
 
