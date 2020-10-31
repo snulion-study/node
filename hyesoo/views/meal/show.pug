@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        style
+            include ../../css/index.css
+    body
+        div.title
+                a(href='/meal') 오늘은 머멍냥
+        div.meal
+            p.mealbrand= meal.brand.name
+            p.mealname= meal.title
+            p.description= meal.description
+        
+        div.button-holder
+            a(href='/meal/edit/'+meal._id)
+                button edit
+            form(action= '/meal/delete/'+meal._id method="post")
+                button(type="submit") DELETE

@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        style
+            include ../../css/index.css
+    body
+        div.title
+                a(href='/meal') 오늘은 머멍냥
+        
+        div.member
+            a(href='/accounts/login') login
+            a(href='/accounts/logout') logout
+            a(href='/accounts/register') register
+
+        div.new
+            a(href='/meal/new') new
+        div.mealholder
+            each meal in meals
+                div.meal
+                    a(href='/meal/show/'+meal._id)
+                        p.mealbrand= meal.brand.name
+                        p.mealname= meal.title
+        
+        div.brandholder
+            each brand in brands
+                div.brand
+                    a(href='/meal/brand/'+brand._id)= brand.name
+                    

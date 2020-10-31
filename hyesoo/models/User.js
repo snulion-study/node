@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: 50
     },
-    email: { // 학교 이메일 
+    email: {
         type: String,
         trim: true, // space를 없애주는 역할
         unique: 1

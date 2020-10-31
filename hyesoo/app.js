@@ -21,9 +21,9 @@ mongoose.connect(config.mongoURI, {
 const user = require('./routes/user');
 app.use('/accounts',user);
 
-//Topic model and router
-const topic = require('./routes/topic');
-app.use('/topic',topic);
+//meal model and router
+const meal = require('./routes/meal');
+app.use('/meal',meal);
 
 // 클라이언트 웹브라우저에서 소스보기 했을때에 코드를 예쁘게 정리해주는 기능
 app.locals.pretty = true;
