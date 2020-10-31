@@ -18,11 +18,9 @@
   "homepage": "https://github.com/kjw7953/inflearn_node#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "mongoose": "^5.10.7",
-=======
->>>>>>> 5e20cbf4a36cee9887a9e618f672d7f3dd3f9d1e
     "pug": "^3.0.0",
     "underscore": "^1.11.0"
   }
