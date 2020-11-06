@@ -1,0 +1,10 @@
+html
+    head
+      title= _title
+    body
+      h1 Hello Jade
+      ul
+        -for(var i=0; i<5; i++) //js문법을 사용하려면 앞에다가 '-'라고 하는 특수기호를 붙여야 함
+          li coding 
+        //-   html 태그를 이용하는 경우에는 - 문법기호 필요 없음. 바로 걍 쓰면 됨.
+      div=  time
