@@ -1,24 +1,25 @@
 const express = require('express');
-const methodOverride = require('method-override');
 const app = express();
+app.listen(3000, () => {
+  console.log('Connected 3000 port!');
+});
+
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const mongoose = require('mongoose');
 const config = require('./config/key');
-const { Task } = require('./models/Task');
-
 mongoose.connect(config.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false
 }).then(() => console.log('MongoDB connected...')).catch(err => console.log(err))
 
-app.listen(3000, () => {
-  console.log('Connected 3000 port!');
-});
+
 app.set('views', './view');
 app.set('view engine', 'pug');
-app.use(methodOverride('_method'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 
 app.get('/', (req, res) => {
   res.send('/index : 인덱스 페이지 /tasks : 투두리스트 페이지');
@@ -28,87 +29,5 @@ app.get('/index', (req, res) => {
   res.render('index');
 });
 
-// task create
-app.post('/tasks', (req, res) => {
-  console.log(req.body);
-
-  const task = new Task(req.body);
-
-  task.save()
-  .then(result => {
-    res.redirect('/tasks');
-  })
-  .catch(err => {
-    res.status(500).json({
-      message: err
-    });
-    console.log(err);
-  });
-});
-
-// task read all
-app.get('/tasks', (req, res) => {
-  Task.find()
-  .then(tasks => {
-    res.status(200);
-    res.render('todoList', {tasks: tasks});
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    })
-  })
-});
-
-// task read one
-app.get('/tasks/:taskId', (req, res) => {
-  const taskId = req.params.taskId;
-
-  Task.findOne({_id: taskId})
-  .then(task => {
-    res.status(200);
-    res.render('taskDetail', {task:task});
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    })
-  });
-});
-
-// task delete
-app.delete('/tasks/:taskId', (req, res) => {
-  const taskId = req.params.taskId;
-
-  Task.findByIdAndDelete(taskId)
-  .then(result => {
-    console.log('삭제성공');
-    res.status(200).redirect('/tasks');
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    })
-  })
-});
-
-// task update
-app.put('/tasks/:taskId', (req, res) => {
-  const taskId = req.params.taskId;
-
-  Task.findByIdAndUpdate({ _id: taskId }, { title: req.body.title, detail: req.body.detail }, { new: true })
-  .then((task) => {;
-    console.log('수정 성공');
-    console.log(task);
-    res.status(200).redirect('/tasks');
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    })
-  })
-});
+const task_router = require('./routes/task');
+app.use('/tasks', task_router);
