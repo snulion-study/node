@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Task } = require('../models/Task');
+const Task = require('../models/Task');
 
 const taskController = {};
 
@@ -7,7 +7,7 @@ taskController.list = function (req, res) {
   Task.find()
   .then(tasks => {
     res.status(200);
-    res.render('todoList', {tasks: tasks});
+    res.render('task/todoList', {tasks: tasks});
   })
   .catch(err => {
     console.log(err);
@@ -23,7 +23,7 @@ taskController.find = function (req, res) {
   Task.findOne({_id: taskId})
   .then(task => {
     res.status(200);
-    res.render('taskDetail', {task:task});
+    res.render('task/taskDetail', {task:task});
   })
   .catch(err => {
     console.log(err);
