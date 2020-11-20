@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+    body
+        h1 
+            a(href='/topic') Server Side JavaScript
+        article
+            h2= topic.title
+            = topic.description
+        
+        div
+            a(href='/topic/edit/'+topic._id) edit
+        form(action= '/topic/delete/'+topic._id method="post")
+            button(type="submit") DELETE
